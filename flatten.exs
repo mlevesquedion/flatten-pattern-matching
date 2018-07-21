@@ -1,4 +1,8 @@
 defmodule Flatten do
+  def flatten([[first | rest] | tail]) do
+    flatten([first | rest ++ tail])
+  end
+
   def flatten([[head] | tail]) do
     flatten([head | tail])
   end
@@ -28,6 +32,10 @@ defmodule FlattenTest do
 
   test "flattens a deeply-nested singleton list" do
     assert flatten([[[[[[[[1]]]]]]]]) == [1]
+  end
+
+  test "flattens a list of lists" do
+    assert flatten([[1, 2, 3], [4], [5, 6]]) == [1, 2, 3, 4, 5, 6]
   end
 
   test "flattens a list with elements of varying depths" do
