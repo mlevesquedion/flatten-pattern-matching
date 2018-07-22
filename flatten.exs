@@ -3,10 +3,6 @@ defmodule Flatten do
     flatten([first | rest ++ tail])
   end
 
-  def flatten([[head] | tail]) do
-    flatten([head | tail])
-  end
-
   def flatten([head | tail]) do
     [head | flatten(tail)]
   end
